@@ -1189,7 +1189,7 @@ set(GDCM_INCLUDE_PATH
   "${GDCM_SOURCE_DIR}/Source/MediaStorageAndFileFormat"
   "${GDCM_SOURCE_DIR}/Source/DataDictionary"
   "${GDCM_SOURCE_DIR}/Source/InformationObjectDefinition"
-  )
+  PARENT_SCOPE)
 if(GDCM_BUILD_NETWORK)
   list(APPEND GDCM_INCLUDE_PATH "${GDCM_SOURCE_DIR}/Source/MessageExchangeDefinition")
 endif()
