@@ -431,6 +431,7 @@ bool JPEGCodec::DecodeByStreams(std::istream &is, std::ostream &os)
         Internal->SetPhotometricInterpretation( this->GetPhotometricInterpretation() );
         if( Internal->DecodeByStreams(is,tmpos) )
           {
+          this->PI = Internal->PI;
           return ImageCodec::DecodeByStreams(tmpos,os);
           }
         else

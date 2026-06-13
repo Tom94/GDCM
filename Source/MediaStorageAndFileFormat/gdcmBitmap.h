@@ -165,7 +165,7 @@ protected:
   unsigned int NumberOfDimensions;
   TransferSyntax TS;
   PixelFormat PF; // SamplesPerPixel, BitsAllocated, BitsStored, HighBit, PixelRepresentation
-  PhotometricInterpretation PI;
+  mutable PhotometricInterpretation PI;
   // Mind dump: unsigned int is required here, since we are reading (0028,0008) Number Of Frames
   // which is VR::IS, so I cannot simply assumed that unsigned short is enough... :(
   std::vector<unsigned int> Dimensions; // Col/Row

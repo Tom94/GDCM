@@ -797,7 +797,7 @@ bool JPEGBITSCodec::DecodeByStreams(std::istream &is, std::ostream &os)
       {
       gdcmWarningMacro( "dimension mismatch. JPEG is " <<
         cinfo.image_width << "," << cinfo.image_height << " while DICOM " << dims[0] <<
-        "," << dims[1]  ); 
+        "," << dims[1]  );
       //this->Dimensions[0] = cinfo.image_width;
       //this->Dimensions[1] = cinfo.image_height;
       /*
@@ -829,8 +829,7 @@ bool JPEGBITSCodec::DecodeByStreams(std::istream &is, std::ostream &os)
           cinfo.jpeg_color_space = JCS_UNKNOWN;
           cinfo.out_color_space = JCS_UNKNOWN;
           }
-        if( GetPhotometricInterpretation() == PhotometricInterpretation::YBR_RCT
-         || GetPhotometricInterpretation() == PhotometricInterpretation::YBR_ICT )
+        if ( cinfo.num_components == 3 )
           this->PI = PhotometricInterpretation::RGB;
       break;
     case JCS_YCbCr:
@@ -843,6 +842,7 @@ bool JPEGBITSCodec::DecodeByStreams(std::istream &is, std::ostream &os)
         gdcmWarningMacro( "Wrong PhotometricInterpretation. DICOM says: " <<
           GetPhotometricInterpretation() << " but JPEG says: "
           << (int)cinfo.jpeg_color_space );
+
         // Here it gets nasty since apparently when this occurs lossless means
         // we should not do any color conversion, but we *might* be breaking
         // correct DICOM file.
@@ -864,6 +864,8 @@ bool JPEGBITSCodec::DecodeByStreams(std::istream &is, std::ostream &os)
         cinfo.out_color_space = JCS_UNKNOWN;
         //this->PlanarConfiguration = 1;
         }
+      if ( cinfo.num_components == 3 )
+        this->PI = cinfo.process == JPROC_LOSSLESS ? PhotometricInterpretation::RGB : PhotometricInterpretation::YBR_FULL_422;
       break;
     case JCS_CMYK:
       gdcm_assert( GetPhotometricInterpretation() == PhotometricInterpretation::CMYK );

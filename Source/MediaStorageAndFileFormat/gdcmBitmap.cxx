@@ -551,6 +551,7 @@ bool Bitmap::TryJPEGCodec(char *buffer, bool &lossyflag) const
     lossyflag = codec.IsLossy();
     //gdcm_assert( codec.IsLossy() == ts.IsLossy() );
 
+    this->PI = codec.GetPhotometricInterpretation();
     return true;
     }
   return false;

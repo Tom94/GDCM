@@ -472,8 +472,7 @@ bool JPEGTurboCodec::DecodeByStreams(std::istream &is, std::ostream &os)
         cinfo.jpeg_color_space = JCS_UNKNOWN;
         cinfo.out_color_space = JCS_UNKNOWN;
       }
-      if (GetPhotometricInterpretation() == PhotometricInterpretation::YBR_RCT ||
-          GetPhotometricInterpretation() == PhotometricInterpretation::YBR_ICT)
+      if ( cinfo.num_components == 3 )
         this->PI = PhotometricInterpretation::RGB;
       break;
     case JCS_YCbCr:
@@ -491,6 +490,8 @@ bool JPEGTurboCodec::DecodeByStreams(std::istream &is, std::ostream &os)
         cinfo.jpeg_color_space = JCS_UNKNOWN;
         cinfo.out_color_space = JCS_UNKNOWN;
       }
+      if ( cinfo.num_components == 3 )
+        this->PI = lossless ? PhotometricInterpretation::RGB : PhotometricInterpretation::YBR_FULL_422;
       break;
     case JCS_CMYK:
       if (lossless) {
