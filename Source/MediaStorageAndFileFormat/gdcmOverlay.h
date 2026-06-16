@@ -60,6 +60,8 @@ public:
   unsigned short GetColumns() const;
   /// set number of frames
   void SetNumberOfFrames(unsigned int numberofframes);
+  /// get number of frames
+  unsigned int GetNumberOfFrames() const;
   /// set description
   void SetDescription(const char* description);
   /// get description
@@ -82,6 +84,8 @@ public:
   const signed short * GetOrigin() const;
   /// set frame origin
   void SetFrameOrigin(unsigned short frameorigin);
+  /// get frame origin
+  unsigned short GetFrameOrigin() const;
   /// set bits allocated
   void SetBitsAllocated(unsigned short bitsallocated);
   /// return bits allocated

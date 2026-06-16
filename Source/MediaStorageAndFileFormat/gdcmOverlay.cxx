@@ -26,10 +26,10 @@ class OverlayInternal
 {
 public:
   OverlayInternal():
-  
+
   Description(),
   Type(),
-  
+
   Data() { Origin[0] = Origin[1] = 0; }
   /*
   (6000,0010) US 484                                      #   2, 1 OverlayRows
@@ -376,6 +376,7 @@ unsigned short Overlay::GetRows() const { return Internal->Rows; }
 void Overlay::SetColumns(unsigned short columns) { Internal->Columns = columns; }
 unsigned short Overlay::GetColumns() const { return Internal->Columns; }
 void Overlay::SetNumberOfFrames(unsigned int numberofframes) { Internal->NumberOfFrames = numberofframes; }
+unsigned int Overlay::GetNumberOfFrames() const { return Internal->NumberOfFrames; }
 void Overlay::SetDescription(const char* description) { if( description ) Internal->Description = description; }
 const char *Overlay::GetDescription() const { return Internal->Description.c_str(); }
 void Overlay::SetType(const char* type) { if( type ) Internal->Type = type; }
@@ -434,6 +435,7 @@ const signed short * Overlay::GetOrigin() const
   return &Internal->Origin[0];
 }
 void Overlay::SetFrameOrigin(unsigned short frameorigin) { Internal->FrameOrigin = frameorigin; }
+unsigned short Overlay::GetFrameOrigin() const { return Internal->FrameOrigin; }
 void Overlay::SetBitsAllocated(unsigned short bitsallocated) { Internal->BitsAllocated = bitsallocated; }
 unsigned short Overlay::GetBitsAllocated() const { return Internal->BitsAllocated; }
 void Overlay::SetBitPosition(unsigned short bitposition) { Internal->BitPosition = bitposition; }
