@@ -58,10 +58,10 @@ install_includes("*.h" "*.txx")
 
 #-----------------------------------------------------------------------------
 # Install Part3.xml / Part4.xml
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Part3.xml
-              ${CMAKE_CURRENT_SOURCE_DIR}/Part4.xml
-  DESTINATION ${GDCM_INSTALL_DATA_DIR}/XML COMPONENT Libraries
-)
+# install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Part3.xml
+#               ${CMAKE_CURRENT_SOURCE_DIR}/Part4.xml
+#   DESTINATION ${GDCM_INSTALL_DATA_DIR}/XML COMPONENT Libraries
+# )
 
 #-----------------------------------------------------------------------------
 file(GLOB GDCM_XML_TABLES_GLOB
